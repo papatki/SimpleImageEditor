@@ -1,3 +1,5 @@
+package com.pati.images;
+
 import java.awt.*;
 
 /**
