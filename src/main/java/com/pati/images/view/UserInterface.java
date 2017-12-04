@@ -12,7 +12,9 @@ public class UserInterface extends JFrame {
     public UserInterface(MainMenuBar mainMenuBar) {
         this.usingImagePanel = new JPanel();
         this.jLabel = new JLabel();
+        mainMenuBar.createMenuBar();
         setJMenuBar(mainMenuBar.getMenuBar());
+        mainMenuBar.createMenuBar();
         setContentPane(usingImagePanel);
 
         setTitle("Pimp My Picture");

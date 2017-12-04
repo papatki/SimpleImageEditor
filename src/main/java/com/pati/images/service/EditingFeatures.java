@@ -37,6 +37,13 @@ public class EditingFeatures {
     public static void exitProgramme() {
             System.exit(0);
     }
+
+    public static void undo() {
+
+    }
+    public static void redo() {
+
+    }
 //    todo redo and undo methods
 
 
