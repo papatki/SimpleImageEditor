@@ -1,5 +1,7 @@
 package com.pati.images;
 
+import com.pati.images.controller.AppController;
+
 import java.awt.*;
 
 /**
@@ -8,9 +10,8 @@ import java.awt.*;
 public class Main {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
-            UserInterface ui = new UserInterface();
-            ui.initializeUI();
-            ui.setVisible(true);
+            AppController appController = new AppController();
+            appController.setVisible(true);
         });
     }
 }
