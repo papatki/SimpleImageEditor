@@ -14,7 +14,6 @@ public class UserInterface extends JFrame {
         this.jLabel = new JLabel();
         mainMenuBar.createMenuBar();
         setJMenuBar(mainMenuBar.getMenuBar());
-        mainMenuBar.createMenuBar();
         setContentPane(usingImagePanel);
 
         setTitle("Pimp My Picture");
@@ -24,7 +23,7 @@ public class UserInterface extends JFrame {
         setLocationRelativeTo(null); //center frame
     }
 
-    public void setImage(BufferedImage image) {
+    public void repaint(BufferedImage image) {
         this.image = image;
         repaintAnImage();
     }

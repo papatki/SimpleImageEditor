@@ -1,9 +1,11 @@
 package com.pati.images.service;
 
+import com.pati.images.model.AppModel;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ConvolveOp;
-import java.awt.image.ImageObserver;
 import java.awt.image.Kernel;
 
 public class FilterImage {
@@ -92,71 +94,47 @@ public class FilterImage {
         }
     }
 
-    public void makeBlurry(BufferedImage image) { // todo rewrite methods without Graphics2D ???
-
-        int height = image.getHeight();
-        int width = image.getWidth();
-
-        BufferedImage biSrc = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        Graphics2D graphics2D;
-        graphics2D = biSrc.createGraphics();
-
-        graphics2D.drawImage(image, 0, 0, (ImageObserver) this);
-
-        BufferedImage biDest = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-
+    public static void makeBlurry(AppModel appModel, JFrame observer) {
         float[] data = {0.0625f, 0.125f, 0.0625f,
                 0.125f, 0.25f, 0.125f,
                 0.0625f, 0.125f, 0.0625f};
-        Kernel kernel = new Kernel(3, 3, data);
-        ConvolveOp convolveOp = new ConvolveOp(kernel, ConvolveOp.EDGE_NO_OP, null);
-        convolveOp.filter(biSrc, biDest);
-        image = biDest;
-        image.getGraphics();
+        filterImage(data, observer, appModel);
+
     }
 
-    public  void makeSharpen(BufferedImage image) {
-
-        int height = image.getHeight();
-        int width = image.getWidth();
-
-        BufferedImage biSrc = new BufferedImage(width,
-                height, BufferedImage.TYPE_INT_RGB);
-        Graphics2D graphics2D;
-        graphics2D = biSrc.createGraphics();
-        graphics2D.drawImage(image, 0, 0,(ImageObserver) this);
-
-        BufferedImage biDest = new BufferedImage(width,
-                height, BufferedImage.TYPE_INT_RGB);
+    public static void makeSharpen(AppModel appModel, JFrame observer) {
         float data[] = {-1.0f, -1.0f, -1.0f,
                 -1.0f, 9.0f, -1.0f,
                 -1.0f, -1.0f, -1.0f,};
-        Kernel kernel = new Kernel(3, 3, data);
-        ConvolveOp convolveOp = new ConvolveOp(kernel, ConvolveOp.EDGE_NO_OP, null);
-        convolveOp.filter(biSrc, biDest);
-        image = biDest;
-        image.getGraphics();
+        filterImage(data, observer, appModel);
+
     }
 
-    public void detectEdges(BufferedImage image) {
+    public static void detectEdges(AppModel appModel, JFrame observer) {
+        float data[] = {1.0f, 0.0f, -1.0f,
+                1.0f, 0.0f, -1.0f,
+                1.0f, 0.0f, -1.0f,};
+        filterImage(data, observer, appModel);
+    }
+
+    private static void filterImage(float[] data, JFrame observer, AppModel appModel) {
+        BufferedImage image = appModel.getImage();
         int height = image.getHeight();
         int width = image.getWidth();
         BufferedImage biSrc = new BufferedImage(width,
                 height, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics2D;
         graphics2D = biSrc.createGraphics();
-        graphics2D.drawImage(image, 0, 0, (ImageObserver) this);
+        graphics2D.drawImage(image, 0, 0, observer);
 
         BufferedImage biDest = new BufferedImage(width,
                 height, BufferedImage.TYPE_INT_RGB);
-        float data[] = {1.0f, 0.0f, -1.0f,
-                1.0f, 0.0f, -1.0f,
-                1.0f, 0.0f, -1.0f,};
+
         Kernel kernel = new Kernel(3, 3, data);
         ConvolveOp convolveOp = new ConvolveOp(kernel, ConvolveOp.EDGE_NO_OP, null);
         convolveOp.filter(biSrc, biDest);
-        image = biDest;
-        image.getGraphics();
+        appModel.setImage(biDest);
+
     }
 
 }

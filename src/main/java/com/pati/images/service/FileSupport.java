@@ -1,5 +1,7 @@
 package com.pati.images.service;
 
+import com.pati.images.model.AppModel;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -9,12 +11,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by patrioshka on 12/4/17.
- */
 public class FileSupport {
 
-    public static void openAnImage(BufferedImage image) throws IOException {
+    public static void openAnImage(AppModel appModel) throws IOException {
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Images Files", "jpg", "png", "jpeg");
         JFileChooser fc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
         fc.setFileFilter(filter);
@@ -23,12 +22,7 @@ public class FileSupport {
         int result = fc.showOpenDialog(null);
         if (result == JFileChooser.APPROVE_OPTION) {
             file = fc.getSelectedFile();
-            if (image == null) {
-                ImageIO.read(file);
-
-            } else {
-                ImageIO.read(file);
-            }
+            appModel.setImage(ImageIO.read(file));
         }
     }
 
