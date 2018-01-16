@@ -19,8 +19,8 @@ public class AppController {
     private UserInterface userInterface;
     private MainMenuBar mainMenuBar;
     private AppModel appModel;
-    private final SizedStack<BufferedImage> undoStack =  new SizedStack<>(15);
-    private final SizedStack<BufferedImage> redoStack =  new SizedStack<>(15);
+    private final SizedStack<BufferedImage> undoStack =  new SizedStack<>(30);
+    private final SizedStack<BufferedImage> redoStack =  new SizedStack<>(30);
 
     public void controlAnApp () throws IOException, PrinterException {
         appModel = new AppModel(null);
@@ -28,7 +28,6 @@ public class AppController {
         ActionListener onOpenImage = (event) -> {
             try {
                 FileSupport.openAnImage(appModel);
-                EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
                 userInterface.repaint(appModel.getImage());
                 EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
             } catch (IOException e) {
@@ -56,16 +55,18 @@ public class AppController {
 
         ActionListener onUndo = (event) -> {
             EditingFeatures.saveToRedoStack(redoStack, appModel.getImage());
-            EditingFeatures.undo(userInterface,undoStack);
+            EditingFeatures.undo(userInterface, undoStack);
+
         };
 
         ActionListener onRedo = (event) -> {
-            EditingFeatures.redo(userInterface, redoStack);
             EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
+            EditingFeatures.redo(userInterface, redoStack);
+
         };
 
         ActionListener onMakeGray = (event) -> {
-//            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
             FilterImage.makeGray(appModel.getImage());
             userInterface.repaint(appModel.getImage());
             EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
@@ -73,7 +74,7 @@ public class AppController {
         };
 
         ActionListener onMakeNegative = (event) -> {
-//            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
             FilterImage.makeNegative(appModel.getImage());
             userInterface.repaint(appModel.getImage());
             EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
@@ -81,21 +82,21 @@ public class AppController {
         };
 
         ActionListener onMakeSepia = (event) -> {
-//            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
             FilterImage.makeSepia(appModel.getImage());
             EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
             userInterface.repaint(appModel.getImage());
         };
 
         ActionListener onMakeBlur = (event) -> {
-//            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
             FilterImage.makeBlurry(appModel, userInterface);
             userInterface.repaint(appModel.getImage());
             EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
         };
 
         ActionListener onMakeSharpen = (event) -> {
-//            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
             FilterImage.makeSharpen(appModel, userInterface);
             userInterface.repaint(appModel.getImage());
             EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
@@ -103,7 +104,7 @@ public class AppController {
         };
 
         ActionListener onMakeEdges = (event) -> {
-//            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
             FilterImage.detectEdges(appModel, userInterface);
             userInterface.repaint(appModel.getImage());
             EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());

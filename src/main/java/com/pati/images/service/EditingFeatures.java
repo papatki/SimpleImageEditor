@@ -41,7 +41,7 @@ public class EditingFeatures {
     }
 
     public static void undo(UserInterface userInterface, SizedStack<BufferedImage> undoStack) {
-        if (undoStack.size() > 0 ) {
+        if (undoStack.size() > 0) {
             userInterface.repaint(undoStack.pop());
         }
     }
@@ -60,7 +60,5 @@ public class EditingFeatures {
         stack.push(image);
 
     }
-//    todo redo and undo methods
-
 
 }
