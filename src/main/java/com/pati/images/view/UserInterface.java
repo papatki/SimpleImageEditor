@@ -16,7 +16,7 @@ public class UserInterface extends JFrame {
         setJMenuBar(mainMenuBar.getMenuBar());
         setContentPane(usingImagePanel);
 
-        setTitle("Pimp My Picture");
+        setTitle("Photo Editor");
         setSize(500, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(true); // windows resizing - disabled

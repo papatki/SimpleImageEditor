@@ -10,9 +10,6 @@ import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 
-/**
- * Created by patrioshka on 12/4/17.
- */
 public class EditingFeatures {
 
 

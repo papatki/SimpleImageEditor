@@ -5,7 +5,7 @@ import java.util.Stack;
 public class SizedStack<T> extends Stack<T> {
     private final int MAXSIZE;
 
-    public  SizedStack(int size) {
+    public SizedStack(int size) {
         super();
         this.MAXSIZE = size;
     }

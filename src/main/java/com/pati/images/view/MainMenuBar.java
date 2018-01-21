@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-/**
- * Created by patrioshka on 10/25/17.
- */
+
 public class MainMenuBar {
 
     private JMenuBar jMenuBar;
