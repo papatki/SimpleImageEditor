@@ -19,8 +19,8 @@ public class UserInterface extends JFrame {
         setTitle("Photo Editor");
         setSize(500, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setResizable(true); // windows resizing - disabled
-        setLocationRelativeTo(null); //center frame
+        setResizable(true);
+        setLocationRelativeTo(null);
     }
 
     public void repaint(BufferedImage image) {

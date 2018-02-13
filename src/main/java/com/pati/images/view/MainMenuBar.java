@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-
 public class MainMenuBar {
 
     private JMenuBar jMenuBar;
@@ -87,8 +86,6 @@ public class MainMenuBar {
         exit.addActionListener(onExitingProgramme);
         jFile.add(exit);
 
-
-// edit
         jEdit = new JMenu("Edit");
         jMenuBar.add(jEdit);
 
@@ -104,7 +101,6 @@ public class MainMenuBar {
         jEdit.add(redo);
         jEdit.add(redo);
 
-// filters
         jFilters = new JMenu("Add filter");
         jMenuBar.add(jFilters);
 

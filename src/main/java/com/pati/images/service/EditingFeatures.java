@@ -12,8 +12,7 @@ import java.awt.print.PrinterJob;
 
 public class EditingFeatures {
 
-
-    public static void printAnImage(ImageIcon icon ) throws PrinterException {
+    public static void printAnImage(ImageIcon icon) throws PrinterException {
         PrinterJob printerJob = PrinterJob.getPrinterJob();
         printerJob.setPrintable(new Printable() {
 
@@ -29,12 +28,12 @@ public class EditingFeatures {
             }
         });
         if (printerJob.printDialog()) {
-                printerJob.print();
+            printerJob.print();
         }
     }
 
     public static void exitProgramme() {
-            System.exit(0);
+        System.exit(0);
     }
 
     public static void undo(UserInterface userInterface, SizedStack<BufferedImage> undoStack) {
@@ -42,18 +41,18 @@ public class EditingFeatures {
             userInterface.repaint(undoStack.pop());
         }
     }
+
     public static void redo(UserInterface userInterface, SizedStack<BufferedImage> redoStack) {
         if (redoStack.size() > 0) {
             userInterface.repaint(redoStack.pop());
         }
     }
 
-
     public static void saveToUndoStack(SizedStack<BufferedImage> stack, BufferedImage image) {
         stack.push(image);
     }
 
-    public static void saveToRedoStack(SizedStack <BufferedImage> stack, BufferedImage image) {
+    public static void saveToRedoStack(SizedStack<BufferedImage> stack, BufferedImage image) {
         stack.push(image);
 
     }

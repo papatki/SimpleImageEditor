@@ -29,7 +29,7 @@ public class FilterImage {
         }
     }
 
-    public static  void makeNegative(BufferedImage image) {
+    public static void makeNegative(BufferedImage image) {
         int height = image.getHeight();
         int width = image.getWidth();
 
@@ -52,7 +52,7 @@ public class FilterImage {
         }
     }
 
-    public static  void makeSepia(BufferedImage image) {
+    public static void makeSepia(BufferedImage image) {
         int height = image.getHeight();
         int width = image.getWidth();
 

@@ -6,7 +6,6 @@ import java.awt.*;
 import java.awt.print.PrinterException;
 import java.io.IOException;
 
-
 public class Main {
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {

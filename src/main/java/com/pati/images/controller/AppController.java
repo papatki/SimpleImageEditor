@@ -19,10 +19,10 @@ public class AppController {
     private UserInterface userInterface;
     private MainMenuBar mainMenuBar;
     private AppModel appModel;
-    private final SizedStack<BufferedImage> undoStack =  new SizedStack<>(30);
-    private final SizedStack<BufferedImage> redoStack =  new SizedStack<>(30);
+    private final SizedStack<BufferedImage> undoStack = new SizedStack<>(30);
+    private final SizedStack<BufferedImage> redoStack = new SizedStack<>(30);
 
-    public void controlAnApp () throws IOException, PrinterException {
+    public void controlAnApp() throws IOException, PrinterException {
         appModel = new AppModel(null);
 
         ActionListener onOpenImage = (event) -> {
@@ -84,30 +84,30 @@ public class AppController {
         ActionListener onMakeSepia = (event) -> {
             EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
             FilterImage.makeSepia(appModel.getImage());
-            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
             userInterface.repaint(appModel.getImage());
         };
 
         ActionListener onMakeBlur = (event) -> {
-            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
             FilterImage.makeBlurry(appModel, userInterface);
             userInterface.repaint(appModel.getImage());
             EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
         };
 
         ActionListener onMakeSharpen = (event) -> {
-            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
             FilterImage.makeSharpen(appModel, userInterface);
             userInterface.repaint(appModel.getImage());
-            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
 
         };
 
         ActionListener onMakeEdges = (event) -> {
-            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
             FilterImage.detectEdges(appModel, userInterface);
             userInterface.repaint(appModel.getImage());
-            EditingFeatures.saveToUndoStack(undoStack,appModel.getImage());
+            EditingFeatures.saveToUndoStack(undoStack, appModel.getImage());
 
         };
 
@@ -115,7 +115,6 @@ public class AppController {
                 onMakeGray, onMakeNegative, onMakeSepia, onMakeBlur, onMakeSharpen, onMakeEdges);
         userInterface = new UserInterface(mainMenuBar);
         userInterface.setVisible(true);
-
 
 
     }
